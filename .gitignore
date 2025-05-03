@@ -1,0 +1,24 @@
+
+/bin/
+/obj/
+
+# Arquivos temporários
+*.user
+*.suo
+
+# IDE e cache do VS Code
+.vscode/
+*.dbmdl
+*.DS_Store
+
+# Arquivos de build do NuGet
+*.nupkg
+*.snupkg
+*.nuspec
+project.assets.json
+project.nuget.cache
+
+# Arquivos de log e backup
+*.log
+*.tmp
+*.bak
