@@ -1,9 +1,9 @@
-﻿using System.Globalization;
-using Modelos;
+﻿using Modelos;
 
 ConfiguracaoReserva configuracao = new();
 
-Console.WriteLine("Informe a data mínima (dd-MM-yyyy):");
+Console.WriteLine("==CONFIGURAR RESERVAS==");
+Console.WriteLine("Informe a data mínima (dd/MM/yyyy):");
 while (true)
 {
   try
@@ -13,11 +13,11 @@ while (true)
   }
   catch (Exception e)
   {
-    Console.Write($"Erro: {e.Message}\nDigite uma nova data mínima: ");
+    Console.Write($"Erro: {e.Message}\nDigite uma nova data mínima (dd/MM/yyyy): ");
   }
 }
 
-Console.WriteLine("Informe a data máxima (dd-MM-yyyy):");
+Console.WriteLine("Informe a data máxima (dd/MM/yyyy):");
 while (true)
 {
   try
@@ -27,7 +27,7 @@ while (true)
   }
   catch (Exception e)
   {
-    Console.Write($"Erro: {e.Message}\nDigite uma nova data máxima: ");
+    Console.Write($"Erro: {e.Message}\nDigite uma nova data máxima (dd/MM/yyyy): ");
   }
 }
 
@@ -41,7 +41,7 @@ while (true)
   }
   catch (Exception e)
   {
-    Console.Write($"Erro: {e.Message}\nDigite uma nova hora mínima: ");
+    Console.Write($"Erro: {e.Message}\nDigite uma nova hora mínima (HH:mm): ");
   }
 }
 
@@ -55,6 +55,6 @@ while (true)
   }
   catch (Exception e)
   {
-    Console.Write($"Erro: {e.Message}\nDigite uma nova hora máxima: ");
+    Console.Write($"Erro: {e.Message}\nDigite uma nova hora máxima (HH:mm): ");
   }
 }
