@@ -2,7 +2,7 @@
 
 ConfiguracaoReserva configuracao = new();
 
-Console.WriteLine("==CONFIGURAR RESERVAS==");
+Console.WriteLine("\n==CONFIGURAR RESERVAS==\n");
 Console.WriteLine("Informe a data mínima (dd/MM/yyyy):");
 while (true)
 {
@@ -13,11 +13,11 @@ while (true)
   }
   catch (Exception e)
   {
-    Console.Write($"Erro: {e.Message}\nDigite uma nova data mínima (dd/MM/yyyy): ");
+    Console.Write($"\nErro: {e.Message}\n\nDigite uma nova data mínima (dd/MM/yyyy):\n");
   }
 }
 
-Console.WriteLine("Informe a data máxima (dd/MM/yyyy):");
+Console.WriteLine("\nInforme a data máxima (dd/MM/yyyy):");
 while (true)
 {
   try
@@ -27,11 +27,11 @@ while (true)
   }
   catch (Exception e)
   {
-    Console.Write($"Erro: {e.Message}\nDigite uma nova data máxima (dd/MM/yyyy): ");
+    Console.Write($"\nErro: {e.Message}\n\nDigite uma nova data máxima (dd/MM/yyyy):\n");
   }
 }
 
-Console.WriteLine("Informe a hora mínima (HH:mm):");
+Console.WriteLine("\nInforme a hora mínima (HH:mm):");
 while (true)
 {
   try
@@ -41,11 +41,11 @@ while (true)
   }
   catch (Exception e)
   {
-    Console.Write($"Erro: {e.Message}\nDigite uma nova hora mínima (HH:mm): ");
+    Console.Write($"\nErro: {e.Message}\n\nDigite uma nova hora mínima (HH:mm):\n");
   }
 }
 
-Console.WriteLine("Informe a hora máxima (HH:mm):");
+Console.WriteLine("\nInforme a hora máxima (HH:mm):");
 while (true)
 {
   try
@@ -55,11 +55,11 @@ while (true)
   }
   catch (Exception e)
   {
-    Console.Write($"Erro: {e.Message}\nDigite uma nova hora máxima (HH:mm): ");
+    Console.Write($"\nErro: {e.Message}\n\nDigite uma nova hora máxima (HH:mm):\n");
   }
 }
 
-Console.WriteLine("==AGENDAR RESERVA==");
+Console.WriteLine("\n==AGENDAR RESERVA==\n");
 
 Reserva reserva = new();
 
@@ -72,17 +72,17 @@ while (true)
 
     if (DateTime.Parse(reserva.DataReserva) < DateTime.Parse(configuracao.DataMinima) || DateTime.Parse(reserva.DataReserva) > DateTime.Parse(configuracao.DataMaxima))
     {
-      throw new Exception($"A data da reserva deve estar entre {configuracao.DataMinima} e {configuracao.DataMaxima}.");
+      throw new Exception($"A data da reserva deve estar entre {DateTime.Parse(configuracao.DataMinima):dd/MM/yyyy} e {DateTime.Parse(configuracao.DataMaxima):dd/MM/yyyy}.");
     }
     break;
   }
   catch (Exception e)
   {
-    Console.Write($"Erro: {e.Message}\nDigite uma nova data da reserva (dd/MM/yyyy): ");
+    Console.Write($"\nErro: {e.Message}\n\nDigite uma nova data da reserva (dd/MM/yyyy):\n");
   }
 }
 
-Console.WriteLine("Informe a hora da reserva (HH:mm):");
+Console.WriteLine("\nInforme a hora da reserva (HH:mm):");
 while (true)
 {
   try
@@ -96,18 +96,18 @@ while (true)
 
     if (horaReserva < TimeSpan.Parse(configuracao.HoraMinima) || horaReserva > TimeSpan.Parse(configuracao.HoraMaxima))
     {
-      throw new Exception($"A hora da reserva deve estar entre {configuracao.HoraMinima} e {configuracao.HoraMaxima}.");
+      throw new Exception($"A hora da reserva deve estar entre {TimeSpan.Parse(configuracao.HoraMinima):hh\\:mm} e {TimeSpan.Parse(configuracao.HoraMaxima):hh\\:mm}.");
     }
 
     break;
   }
   catch (Exception e)
   {
-    Console.Write($"Erro: {e.Message}\nDigite uma nova hora da reserva (HH:mm): ");
+    Console.Write($"\nErro: {e.Message}\n\nDigite uma nova hora da reserva (HH:mm):\n");
   }
 }
 
-Console.WriteLine("Informe a descrição da sala:");
+Console.WriteLine("\nInforme a descrição da sala:");
 while (true)
 {
   try
@@ -117,11 +117,11 @@ while (true)
   }
   catch (Exception e)
   {
-    Console.Write($"Erro: {e.Message}\nDigite uma nova descrição da sala: ");
+    Console.Write($"\nErro: {e.Message}\n\nDigite uma nova descrição da sala:\n");
   }
 }
 
-Console.WriteLine("Informe a capacidade da sala:");
+Console.WriteLine("\nInforme a capacidade da sala:");
 while (true)
 {
   try
@@ -131,12 +131,12 @@ while (true)
   }
   catch (Exception e)
   {
-    Console.Write($"Erro: {e.Message}\nDigite uma nova capacidade da sala: ");
+    Console.Write($"\nErro: {e.Message}\n\nDigite uma nova capacidade da sala:\n");
   }
 }
 
-Console.WriteLine("Reserva agendada com sucesso!");
-Console.WriteLine($"Data: {reserva.DataReserva}");
-Console.WriteLine($"Hora: {reserva.HoraReserva}");
+Console.WriteLine("\n==RESERVA AGENDADA COM SUCESSO==\n");
+Console.WriteLine($"Data: {DateTime.Parse(reserva.DataReserva):dd/MM/yyyy}");
+Console.WriteLine($"Hora: {TimeSpan.Parse(reserva.HoraReserva):hh\\:mm}");
 Console.WriteLine($"Descrição da sala: {reserva.DescricaoSala}");
 Console.WriteLine($"Capacidade da sala: {reserva.CapacidadeSala}");

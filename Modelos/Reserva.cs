@@ -20,14 +20,14 @@ public class Reserva
   public String? DescricaoSala
   {
     get { return _descricaoSala; }
-    set { _descricaoSala = value; }
+    set { _descricaoSala = value is not null ? RegistrarDescricao(value) : throw new ArgumentNullException(nameof(value), "Descrição da sala não pode ser nula!"); }
   }
   public String? CapacidadeSala
   {
     get { return _capacidadeSala; }
     set
     {
-      _capacidadeSala = RegistrarCapacidade(value);
+      _capacidadeSala = value is not null ? RegistrarCapacidade(value) : throw new ArgumentNullException(nameof(value), "Capacidade da sala não pode ser nula!");
     }
   }
   private DateTime RegistrarData(string data)
@@ -49,6 +49,14 @@ public class Reserva
       throw new Exception($"Hora {hora} Inválida!");
     }
     return _hora;
+  }
+  private String RegistrarDescricao(string descricao)
+  {
+    if (descricao.Length < 5 || descricao.Length > 50)
+    {
+      throw new Exception($"Descrição da sala deve ter entre 5 e 50 caracteres!");
+    }
+    return descricao.ToString();
   }
   private String RegistrarCapacidade(string capacidade)
   {
