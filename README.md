@@ -1,7 +1,5 @@
 ## Tema: Sistema de Reservas de Salas de Estudo com Configuração de Parâmetros
 
-## ap2-poo
-
 ## Descrição
 
 Este projeto é uma aplicação de console em C# para gerenciar reservas de salas. Ele permite configurar datas e horários mínimos e máximos para reservas, além de agendar reservas com informações como data, hora, descrição e capacidade da sala.
