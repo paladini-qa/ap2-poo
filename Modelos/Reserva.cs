@@ -6,7 +6,7 @@ public class Reserva
   private TimeSpan _horaReserva;
   private string? _descricaoSala;
   private string? _capacidadeSala;
-
+  public List<string> ErrosDeValidacao = [];
   public string DataReserva
   {
     get { return _dataReserva.ToString(); }
@@ -30,13 +30,12 @@ public class Reserva
       _capacidadeSala = value is not null ? RegistrarCapacidade(value) : throw new ArgumentNullException(nameof(value), "Capacidade da sala não pode ser nula!");
     }
   }
-  public List<string> ErrosDeValidacao = new List<string>();
   public Reserva(string dataReserva, string horaReserva, string descricaoSala, string capacidadeSala)
   {
-    DataReserva = dataReserva;
-    HoraReserva = horaReserva;
-    DescricaoSala = descricaoSala;
-    CapacidadeSala = capacidadeSala;
+    _dataReserva = RegistrarData(dataReserva);
+    _horaReserva = RegistrarHora(horaReserva);
+    _descricaoSala = RegistrarDescricao(descricaoSala);
+    _capacidadeSala = RegistrarCapacidade(capacidadeSala);
     if (!ValidarReserva())
     {
       throw new ArgumentException(string.Join("\n", ErrosDeValidacao));
@@ -114,6 +113,6 @@ public class Reserva
   }
   public override string ToString()
   {
-    return $"Data: {DataReserva}, Hora: {HoraReserva}, Descrição da sala: {DescricaoSala}, Capacidade da sala: {CapacidadeSala}";
+    return $"Data: {_dataReserva}, Hora: {_horaReserva}, Descrição da sala: {_descricaoSala}, Capacidade da sala: {_capacidadeSala}";
   }
 }
