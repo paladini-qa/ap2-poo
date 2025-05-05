@@ -1,6 +1,8 @@
 
 /bin/
+/bin
 /obj/
+/obj
 
 # Arquivos temporários
 *.user
