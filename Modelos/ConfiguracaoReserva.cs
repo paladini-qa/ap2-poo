@@ -6,38 +6,38 @@ public class ConfiguracaoReserva
   private DateTime _dataMaxima;
   private TimeSpan _horaMinima;
   private TimeSpan _horaMaxima;
-  public String DataMinima
+  public string DataMinima
   {
     get { return _dataMinima.ToString(); }
-    set { _dataMinima = _validarDataInformada(value); }
+    set { _dataMinima = ValidarDataInformada(value); }
   }
-  public String DataMaxima
+  public string DataMaxima
   {
     get { return _dataMaxima.ToString(); }
     set
     {
-      _dataMaxima = _validarDataInformada(value);
-      _validarDataMaximaMenorQueMinima();
+      _dataMaxima = ValidarDataInformada(value);
+      ValidarDataMaximaMenorQueMinima();
     }
   }
-  public String HoraMinima
+  public string HoraMinima
   {
     get { return _horaMinima.ToString(); }
     set
     {
-      _horaMinima = _validarHoraInformada(value);
+      _horaMinima = ValidarHoraInformada(value);
     }
   }
-  public String HoraMaxima
+  public string HoraMaxima
   {
     get { return _horaMaxima.ToString(); }
     set
     {
-      _horaMaxima = _validarHoraInformada(value);
-      _validarHoraMaximaMenorQueMinima();
+      _horaMaxima = ValidarHoraInformada(value);
+      ValidarHoraMaximaMenorQueMinima();
     }
   }
-  private DateTime _validarDataInformada(string data)
+  private DateTime ValidarDataInformada(string data)
   {
     if (!DateTime.TryParseExact(data,
                    "dd/MM/yyyy",
@@ -49,7 +49,7 @@ public class ConfiguracaoReserva
     }
     return _data;
   }
-  private TimeSpan _validarHoraInformada(string hora)
+  private TimeSpan ValidarHoraInformada(string hora)
   {
     if (!TimeSpan.TryParse(hora, out TimeSpan _hora))
     {
@@ -58,14 +58,14 @@ public class ConfiguracaoReserva
     return _hora;
   }
 
-  private void _validarDataMaximaMenorQueMinima()
+  private void ValidarDataMaximaMenorQueMinima()
   {
     if (_dataMaxima < _dataMinima)
     {
       throw new Exception($"Data máxima {_dataMaxima:dd/MM/yyyy} menor que data mínima {_dataMinima:dd/MM/yyyy}!");
     }
   }
-  private void _validarHoraMaximaMenorQueMinima()
+  private void ValidarHoraMaximaMenorQueMinima()
   {
     if (_horaMaxima < _horaMinima)
     {

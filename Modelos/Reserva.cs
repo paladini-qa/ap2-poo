@@ -4,25 +4,25 @@ public class Reserva
 {
   private DateTime _dataReserva;
   private TimeSpan _horaReserva;
-  private String? _descricaoSala;
-  private String? _capacidadeSala;
+  private string? _descricaoSala;
+  private string? _capacidadeSala;
 
-  public String DataReserva
+  public string DataReserva
   {
     get { return _dataReserva.ToString(); }
     set { _dataReserva = RegistrarData(value); }
   }
-  public String HoraReserva
+  public string HoraReserva
   {
     get { return _horaReserva.ToString(); }
     set { _horaReserva = RegistrarHora(value); }
   }
-  public String? DescricaoSala
+  public string? DescricaoSala
   {
     get { return _descricaoSala; }
     set { _descricaoSala = value is not null ? RegistrarDescricao(value) : throw new ArgumentNullException(nameof(value), "Descrição da sala não pode ser nula!"); }
   }
-  public String? CapacidadeSala
+  public string? CapacidadeSala
   {
     get { return _capacidadeSala; }
     set
@@ -50,7 +50,7 @@ public class Reserva
     }
     return _hora;
   }
-  private String RegistrarDescricao(string descricao)
+  private string RegistrarDescricao(string descricao)
   {
     if (descricao.Length < 5 || descricao.Length > 50)
     {
@@ -58,7 +58,7 @@ public class Reserva
     }
     return descricao.ToString();
   }
-  private String RegistrarCapacidade(string capacidade)
+  private string RegistrarCapacidade(string capacidade)
   {
     if (!int.TryParse(capacidade, out int capacidadeInt) || capacidadeInt <= 0 || capacidadeInt >= 40)
     {
