@@ -110,7 +110,7 @@ public class Reserva
       ErrosDeValidacao.Add("Hora da reserva inválida!");
     }
 
-    return !ErrosDeValidacao.Any();
+    return ErrosDeValidacao.Count == 0;
   }
   public override string ToString()
   {
